@@ -38,7 +38,8 @@ module.exports.BlogPost = {
             details: await res.getModelListDetails(BlogPost),
             posts: data,
             categories,
-            recentPosts
+            recentPosts,
+            pageUrl: req.url
         })
     },
 

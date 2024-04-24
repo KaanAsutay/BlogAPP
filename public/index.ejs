@@ -69,10 +69,12 @@
                 
                 <!-- Pagination -->
                 <nav class="blog-pagination" aria-label="Pagination">
-                    <a class="btn btn-outline-primary rounded-pill" href="#">1</a>
-                    <a class="btn btn-outline-secondary rounded-pill">2</a>
+                    {% for (let pageNo = 1; pageNo <= details.pages.total; pageNo++) { %}
+                    <a class="btn btn-{%= (pageNo == details.pages.current ? 'primary' : 'outline-secondary') %} rounded-pill" 
+                        href="{%= pageUrl %}&page={%= pageNo %}">{%= pageNo %}</a>
+                    {% } %}
                 </nav>
-                <p class="text-end p-2 border-top">Total 5 Posts</p>
+                <p class="text-end p-2 border-top">Total {%= details.totalRecords %} Posts</p>
             </div>
             <div class="col-md-4">
                 <div class="position-sticky" style="top: 2rem;">
