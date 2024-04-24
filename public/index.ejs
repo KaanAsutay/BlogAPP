@@ -32,16 +32,14 @@
         </header>
         <!-- Blog Categories -->
         <div class="nav-scroller py-1 mb-3 border-bottom">
+
             <nav class="nav nav-underline justify-content-between">
-                <a class="nav-item nav-link link-body-emphasis" href="#">CategoryName</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">CategoryName</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">CategoryName</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">CategoryName</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">CategoryName</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">CategoryName</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">CategoryName</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">CategoryName</a>
+                {%= %}
+                {% for (let category of categories ) { %}
+                <a class="nav-item nav-link link-body-emphasis" href="#">{%= category.name %}</a>  
+                {% } %}
             </nav>
+            
         </div>
     </div>
     <!-- main start -->
