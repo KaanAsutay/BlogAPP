@@ -26,8 +26,8 @@ app.use(session({ secret: process.env.SECRET_KEY || 'secret_keys_for_cookies' })
 // npm i ejs
 
 const ejs = require('ejs')
-// <% templateCoed %>
-// default delimiter: %
+// default using: <% templateOrJsCodes %>
+// default delimiter: '%' 
 // ejs.delimiter = '*'  // <* ... *>
 // default openDelimiter: '<'
 ejs.openDelimiter = '{' // {% ...
