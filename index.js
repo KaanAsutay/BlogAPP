@@ -37,6 +37,9 @@ ejs.closeDelimiter = '}' // ... %}
 app.set('view engine', 'ejs')
 app.set('views', './public')
 
+// Accept form data & convert to object:
+app.use(express.urlencoded({ extended: true }))
+
 /* ------------------------------------------------------- */
 // Accept json data & convert to object:
 app.use(express.json())
