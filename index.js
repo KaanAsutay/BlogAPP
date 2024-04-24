@@ -22,6 +22,12 @@ const PORT = process.env.PORT || 8000
 const session = require("cookie-session")
 app.use(session({ secret: process.env.SECRET_KEY || 'secret_keys_for_cookies' }))
 /* ------------------------------------------------------- */
+// Template:
+// npm i ejs
+
+
+
+/* ------------------------------------------------------- */
 // Accept json data & convert to object:
 app.use(express.json())
 
