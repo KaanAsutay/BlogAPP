@@ -35,7 +35,7 @@ module.exports.BlogPost = {
         // HTML Output:
         res.render('index', {
             categories,
-            post: data,
+            posts: data,
             details: await res.getModelListDetails(BlogPost)
         })
     },
