@@ -42,7 +42,8 @@ module.exports.BlogPost = {
             posts: data,
             categories,
             recentPosts,
-            pageUrl: req.url
+            // pageUrl: req.url,
+            pageUrl: req.url.replace(/[?|&]page=([^&]+)/gi, '') // clean 'page' queries from url.
         })
     },
 
