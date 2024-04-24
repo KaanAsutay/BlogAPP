@@ -37,7 +37,7 @@ module.exports.BlogPost = {
         if (!req.url.includes('?')) req.url += '?'
 
         // HTML Output:
-        res.render('index', {
+        res.render('postList', {
             details: await res.getModelListDetails(BlogPost),
             posts: data,
             categories,
