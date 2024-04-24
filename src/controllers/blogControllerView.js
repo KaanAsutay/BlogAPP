@@ -92,7 +92,9 @@ module.exports.BlogPost = {
         
         const data = await BlogPost.deleteOne({ _id: req.params.postId })
 
-        res.sendStatus( (data.deletedCount >= 1) ? 204 : 404 )
+        // res.sendStatus( (data.deletedCount >= 1) ? 204 : 404 )
+
+        res.redirect('/')
 
     },
 }
