@@ -31,12 +31,14 @@ module.exports.BlogPost = {
         // })
 
         const categories = await BlogCategory.find()
+        const recentPosts = await BlogPost.find().sort({ createdAt: 'desc' }).limit(3)
 
         // HTML Output:
         res.render('index', {
-            categories,
+            details: await res.getModelListDetails(BlogPost),
             posts: data,
-            details: await res.getModelListDetails(BlogPost)
+            categories,
+            recentPosts
         })
     },
 
