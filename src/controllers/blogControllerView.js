@@ -50,14 +50,26 @@ module.exports.BlogPost = {
     // CRUD ->
 
     create: async (req, res) => {
-        
-        const data = await BlogPost.create(req.body)
 
-        res.status(201).send({
-            error: false,
-            body: req.body,
-            result: data,
-        })
+        if (req.method == 'POST') {
+        
+            const data = await BlogPost.create(req.body)
+    
+            // res.status(201).send({
+            //     error: false,
+            //     body: req.body,
+            //     result: data,
+            // })
+
+            res.redirect('/post/' + data.id)
+
+        } else {
+
+            res.render('postForm', {
+                categories: await BlogCategory.find(),
+                post: null
+            })
+        }
     },
 
     read: async (req, res) => {
