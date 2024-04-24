@@ -25,7 +25,17 @@ app.use(session({ secret: process.env.SECRET_KEY || 'secret_keys_for_cookies' })
 // Template:
 // npm i ejs
 
+const ejs = require('ejs')
+// <% templateCoed %>
+// default delimiter: %
+// ejs.delimiter = '*'  // <* ... *>
+// default openDelimiter: '<'
+ejs.openDelimiter = '{' // {% ...
+// default closeDelimiter: '>'
+ejs.closeDelimiter = '}' // ... %}
 
+app.set('view engine', 'ejs')
+app.set('views', './public')
 
 /* ------------------------------------------------------- */
 // Accept json data & convert to object:
