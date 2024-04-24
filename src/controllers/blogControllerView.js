@@ -76,16 +76,28 @@ module.exports.BlogPost = {
     },
 
     update: async (req, res) => {
+
+        if (req.method == 'POST') {
         
-        const data = await BlogPost.updateOne({ _id: req.params.postId }, req.body, { runValidators: true })
+            const data = await BlogPost.updateOne({ _id: req.params.postId }, req.body, { runValidators: true })
+    
+            // res.status(202).send({
+            //     error: false,
+            //     body: req.body,
+            //     result: data, // update infos
+            //     newData: await BlogPost.findOne({ _id: req.params.postId })
+            // })
 
-        res.status(202).send({
-            error: false,
-            body: req.body,
-            result: data, // update infos
-            newData: await BlogPost.findOne({ _id: req.params.postId })
-        })
+            res.redirect('/post/' + req.params.postId)
 
+        } else {
+
+            res.render('postForm', {
+                categories: await BlogCategory.find(),
+                post: await BlogPost.findOne({ _id: req.params.postId }).populate('blogCategoryId')
+            })
+
+        }
     },
 
     delete: async (req, res) => {
