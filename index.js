@@ -40,6 +40,9 @@ app.set('views', './public')
 // Accept form data & convert to object:
 app.use(express.urlencoded({ extended: true }))
 
+// Call staticFiles:
+app.use('/assets', express.static('./public/assets'))
+
 /* ------------------------------------------------------- */
 // Accept json data & convert to object:
 app.use(express.json())
