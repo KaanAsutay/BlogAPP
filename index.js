@@ -51,13 +51,16 @@ require('./src/dbConnection')
 app.use(require('./src/middlewares/findSearchSortPage'))
 
 // HomePage:
-app.all('/', (req, res) => {
-    res.send('WELCOME TO BLOG API')
-})
+// app.all('/', (req, res) => {
+//     res.send('WELCOME TO BLOG API')
+// })
 
 // Routes:
-app.use('/user', require('./src/routes/userRoute'))
-app.use('/blog', require('./src/routes/blogRoute'))
+// app.use('/user', require('./src/routes/userRoute'))
+// app.use('/blog', require('./src/routes/blogRoute'))
+app.use('/api/user', require('./src/routes/userRoute'))
+app.use('/api/blog', require('./src/routes/blogRoute'))
+app.use('/', require('./src/routes/view')) // publish from template
 
 /* ------------------------------------------------------- */
 // Synchronization:
