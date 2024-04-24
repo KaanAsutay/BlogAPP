@@ -30,8 +30,14 @@ module.exports.BlogPost = {
         //     result: data,
         // })
 
+        const categories = await BlogCategory.find()
+
         // HTML Output:
-        res.render('index')
+        res.render('index', {
+            categories,
+            post: data,
+            details: await res.getModelListDetails(BlogPost)
+        })
     },
 
     listCategoryPosts: async (req, res) => {
