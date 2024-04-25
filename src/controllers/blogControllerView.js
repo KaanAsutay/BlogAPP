@@ -68,6 +68,7 @@ module.exports.BlogPost = {
         } else {
 
             res.render('postForm', {
+                user: req.session?.user, 
                 categories: await BlogCategory.find(),
                 post: null
             })
@@ -84,6 +85,7 @@ module.exports.BlogPost = {
         // })
 
         res.render('postRead', {
+            user: req.session?.user, 
             post: data
         })
 
@@ -107,6 +109,7 @@ module.exports.BlogPost = {
         } else {
 
             res.render('postForm', {
+                user: req.session?.user, 
                 categories: await BlogCategory.find(),
                 post: await BlogPost.findOne({ _id: req.params.postId }).populate('blogCategoryId')
             })

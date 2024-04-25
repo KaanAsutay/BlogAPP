@@ -63,7 +63,9 @@ module.exports.User = {
 
         } else {
 
-            res.render('loginForm')
+            res.render('loginForm', {
+                user: req.session?.user
+            })
 
         }
 
