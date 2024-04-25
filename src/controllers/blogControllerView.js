@@ -54,6 +54,9 @@ module.exports.BlogPost = {
     create: async (req, res) => {
 
         if (req.method == 'POST') {
+
+            // Add userId from session:
+            req.body.userId = req.session.user.id
         
             const data = await BlogPost.create(req.body)
     
