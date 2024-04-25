@@ -47,6 +47,9 @@ app.use('/assets', express.static('./public/assets'))
 // Accept json data & convert to object:
 app.use(express.json())
 
+// TinyMCE static files:
+app.use('/tinymce', express.static('./node_modules/tinymce'))
+
 // Connect to MongoDB with Mongoose:
 require('./src/dbConnection')
 
