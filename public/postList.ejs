@@ -1,23 +1,28 @@
-{%- include('incHeader') %}
+<!--
+    No need send parameter; can use variables in here, to in included ejs:
+    true -> include('incHeader')
+    false -> include('incHeader', { user })
+-->
+{%- include('incHeader', { user }) %}
+
         <!-- Blog Categories -->
         <div class="nav-scroller py-1 mb-3 border-bottom">
-
             <nav class="nav nav-underline justify-content-between">
-                {%= %}
                 {% for (let category of categories ) { %}
-                <a class="nav-item nav-link link-body-emphasis" href="/post?filter[blogCategoryId]={%= category._id %}">{%= category.name %}</a>  
+                <a class="nav-item nav-link link-body-emphasis" href="/post?filter[blogCategoryId]={%= category._id %}">{%= category.name %}</a>
                 {% } %}
             </nav>
-
         </div>
     </div>
     <!-- main start -->
     <main class="container">
         <div class="row g-5">
             <div class="col-md-8">
+                {% if (user) { %}
                 <div class="admin-area text-end">
                     <a class="btn btn-primary" href="/post/create">New Post</a>
                 </div>
+                {% } %}
                 <h3 class="pb-4 fst-italic border-bottom">
                     Welcome to my blog site.
                 </h3>
@@ -28,14 +33,15 @@
                         <a href="/post/{%= post._id %}" class="link-body-emphasis text-decoration-none">{%= post.title %}</a>
                     </h2>
                     <p class="blog-post-meta">{%= post.createdAt.toUTCString() %}</p>
-                    {%- post.content.substring(0, 500) %} ...read more...
+                    {%- post.content.replace(/<(.|\n)*?>/g, '').substring(0, 600) %} ...read more...
+                    {% if (user) { %}
                     <div class="admin-area text-end">
                         <a class="btn btn-sm btn-primary" href="/post/{%= post._id %}/update">Update</a>
                         <a class="btn btn-sm btn-danger" href="/post/{%= post._id %}/delete" onclick="return confirm('Are you sure?')">Delete</a>
                     </div>
+                    {% } %}
                 </article>
                 {% } %}
-                
                 <!-- Pagination -->
                 <nav class="blog-pagination" aria-label="Pagination">
                     <a class="btn btn-outline-primary rounded-pill" href="{%= pageUrl %}&page=1">&laquo;</a>
@@ -58,7 +64,7 @@
                             {% for (let recentPost of recentPosts) { %}
                             <li>
                                 <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
-                                    href="/post/:id">
+                                    href="/post/{%= recentPost.id %}">
                                     <div class="col-lg-8">
                                         <h5>{%= recentPost.title %}</h5>
                                         <p class="my-2">{%= recentPost.content.replace(/<(.|\n)*?>/g, '').substring(0, 100) %} ...</p>
@@ -74,4 +80,5 @@
         </div>
     </main>
     <!-- main end -->
-   {%- include('incFooter' )%}
+
+{%- include('incFooter') %}

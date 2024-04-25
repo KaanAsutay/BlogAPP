@@ -38,6 +38,7 @@ module.exports.BlogPost = {
 
         // HTML Output:
         res.render('postList', {
+            user: req.session?.user,
             details: await res.getModelListDetails(BlogPost),
             posts: data,
             categories,
