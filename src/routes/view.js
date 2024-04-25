@@ -23,4 +23,12 @@ router.all('/post/:postId', blogPostView.read)
 router.all('/post/:postId/update', blogPostView.update)
 router.all('/post/:postId/delete', blogPostView.delete)
 
+// USER
+
+const { User: userView } = require('../controllers/userControllerView')
+
+router.all('/login', userView.login)
+router.all('/logout', userView.logout)
+
+
 module.exports = router
