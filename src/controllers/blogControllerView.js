@@ -43,6 +43,7 @@ module.exports.BlogPost = {
             categories,
             recentPosts,
             // pageUrl: req.url,
+            // convert "?key=value&page=1&&page=2" to "?key=value"
             pageUrl: req.url.replace(/[?|&]page=([^&]+)/gi, '') // clean 'page' queries from url.
         })
     },

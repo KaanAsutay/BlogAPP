@@ -38,10 +38,14 @@
                 
                 <!-- Pagination -->
                 <nav class="blog-pagination" aria-label="Pagination">
+                    <a class="btn btn-outline-primary rounded-pill" href="{%= pageUrl %}&page=1">&laquo;</a>
+                    <a class="btn btn-outline-primary rounded-pill" href="{%= pageUrl %}&page={%= details.pages.previous %}">&lt;</a>
                     {% for (let pageNo = 1; pageNo <= details.pages.total; pageNo++) { %}
                     <a class="btn btn-{%= (pageNo == details.pages.current ? 'primary' : 'outline-secondary') %} rounded-pill" 
                         href="{%= pageUrl %}&page={%= pageNo %}">{%= pageNo %}</a>
                     {% } %}
+                    <a class="btn btn-outline-primary rounded-pill" href="{%= pageUrl %}&page={%= details.pages.next %}">&gt;</a>
+                    <a class="btn btn-outline-primary rounded-pill" href="{%= pageUrl %}&page={%= details.pages.total %}">&raquo;</a>
                 </nav>
                 <p class="text-end p-2 border-top">Total {%= details.totalRecords %} Posts</p>
             </div>
